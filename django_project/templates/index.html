@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+        <div class="container">
+            <h1 style="text-align:center;">Продажи по покупателям</h1>
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Продавец\Покупатель</th>
+                    {% for customer in customers %}
+                      <th>{{customer}}</th>
+                    {% endfor %}
+                </tr>
+                </thead>
+                <tbody>
+                    {% for statistics in vendor_statistics %}
+                        <tr>
+                            <th scope="row">{{statistics.vendor.id}}</th>
+                            <td>{{statistics.vendor.fio}}</td>
+                             {% for purchase in statistics.purchases %}
+                                <td>{{purchase}}</td>
+                              {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+	</body>
+</html>
